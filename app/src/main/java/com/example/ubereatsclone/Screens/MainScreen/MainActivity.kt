@@ -2,6 +2,7 @@ package com.example.ubereatsclone.Screens.MainScreen
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -39,6 +40,8 @@ import androidx.compose.ui.unit.sp
 import com.example.ubereatsclone.R
 import com.example.ubereatsclone.ui.theme.UberEatsCloneTheme
 
+private const val TAG = "MainActivity"
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,15 +56,15 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Content(){
+    //status bar color is white
     val navState = remember {mutableIntStateOf(0)}
+    val menuState = remember {mutableIntStateOf(0)}
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        topBar = { TopBar(menuState = menuState)},
         bottomBar = { NavBar(navState) }
     ) { innerPadding ->
-        Greeting(
-            name = "Android",
-            modifier = Modifier.padding(innerPadding)
-        )
+        Log.d(TAG, "Content: $innerPadding")
     }
 }
 
