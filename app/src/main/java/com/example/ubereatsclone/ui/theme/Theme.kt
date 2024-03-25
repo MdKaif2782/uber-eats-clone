@@ -41,11 +41,6 @@ fun UberEatsCloneTheme(
     content: @Composable () -> Unit
 ) {
 
-    //disable splash screen
-    val activity = LocalContext.current as Activity
-    // use a composable to disable the splash screen
-    activity.window.setBackgroundDrawableResource(android.R.color.transparent)
-
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
